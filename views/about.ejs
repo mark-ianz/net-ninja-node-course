@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node JS | <%= title %></title>
+  </head>
+  <body>
+    <style>
+      main {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .member-container {
+        border: solid 1px;
+        padding: 8px;
+      }
+    </style>
+
+    <h1>About</h1>
+    <%- include ('./partials/nav.ejs') %>
+    <main>
+      <% if (!error && teamMembers.length > 0) { %> <% teamMembers.forEach (member => { %>
+      <div class="member-container">
+        <p>Name: <%= member.name %></p>
+        <p>Role: <%= member.role %></p>
+      </div>
+
+      <% }) %> <% } else if (teamMembers.length <= 0) { %>
+      <div class="member-container">
+        <p>There are currently no members yet.</p>
+      </div>
+      <%} else {%>
+      <div class="member-container">
+        <p><%= error %></p>
+      </div>
+      <%}%>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include ('./partials/head.ejs') %>
+  <style>
+    * {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+    }
+
+    .content {
+      border: solid 1px;
+      width: 200px;
+      aspect-ratio: 1/1;
+      padding: 12px;
+      cursor: pointer;
+      transition: 150ms;
+    }
+
+    .content:hover {
+      transform: scale(.95);
+    }
+
+    .content-title {
+      font-weight: bold;
+    }
+
+    .content-img {
+      border: solid 1px red;
+    }
+
+    #contents-container {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+
+  </style>
+  <body>
+    <h1>Welcome to Homepage!</h1>
+    <%- include ('./partials/nav.ejs') %>
+    <main>
+      <h1>Posts:</h1>
+      <div id="contents-container">
+        <% if (!blogs.error && blogs.length > 0) { %> <% blogs.forEach(blog => { %>
+        <a href="/post/<%= blog.id %>" class="content-link">
+          <div class="content">
+            <p class="content-title"><%= blog.title %></p>
+            <p><%= blog.desc %></p>
+          </div>
+        </a>
+        <% }) %> <% } else if (blogs.length <= 0) { %>
+        <p>No blogs to display.</p>
+        <% } else { %>
+        <p><%= error %></p>
+        <% } %>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include ('./partials/head.ejs') %>
+
+  <body>
+    <h1>Upload your content</h1>
+    <%- include ('./partials/nav.ejs') %>
+    <form action="/submit-post", method="post">
+      <label for="title">Title</label>
+      <br />
+      <input type="text" id="title" name="title" required />
+      <br />
+      <label for="desc">Description</label>
+      <br />
+      <textarea name="desc" id="desc" cols="24" rows="8" required></textarea>
+      <br />
+      <br />
+      <button type="submit">Post!</button>
+    </form>
+  </body>
+</html>
