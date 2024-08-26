@@ -21,7 +21,7 @@ async function startServer() {
   try {
     // connect to mongoDB
     const dbURI =
-      "mongodb+srv://bustillomarkian23:WgWLCT3KfjfLGheP@cluster0.6pyo3va.mongodb.net/node-ninja?retryWrites=true&w=majority&appName=Cluster0";
+      "your_mongodb_uri";
 
     await mongoose.connect(dbURI);
 
